@@ -23,7 +23,7 @@ public class LongCommonString {
         String s = "";
         for (int i = 0; i < min.length(); i++) {
             for (int j = i + 1; j <= min.length(); j++) {
-                // j-i>l 这个就保证了出现了最长长度相等，值保留最先出现的那个子串
+                // j-i>l 这个就保证了出现了最长长度相等，保留最先出现的那个子串
                 if (max.contains(min.substring(i, j)) && j - i > l) {
                     l = j - i;
                     s = min.substring(i, j);
@@ -46,6 +46,7 @@ public class LongCommonString {
         int i, j;
         int x = 0, y = 0;
         for (i = 1; i < c1.length + 1; i++) {
+            
             for (j = 1; j < c2.length + 1; j++) {
                 // i-1才是下标
                 if (c1[i - 1] == c2[j - 1]) {
@@ -94,7 +95,6 @@ public class LongCommonString {
                     opt[i][j] = (opt[i - 1][j] >= opt[i][j - 1] ? opt[i - 1][j]
                             : opt[i][j - 1]);
                 }
-                
                 if(len <= opt[i][j]){
                     len = opt[i][j];
                     endx = i;
@@ -141,7 +141,7 @@ public class LongCommonString {
         if (X.charAt(i - 1) == Y.charAt(j - 1)) {
             str.append(X.charAt(i - 1));
             print(opt, X, Y, i - 1, j - 1, str); // don't put this line before
-                                                 // the
+                                                // the
             // upper line. Otherwise, the order
             // is wrong.
         } else if (opt[i - 1][j] >= opt[i][j]) {
